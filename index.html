@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YT Playlist Downloader - Sky Blue Edition</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/jszip@3.10.1/dist/jszip.min.js"></script>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Main Panel -->
+        <div class="main-panel fade-in">
+            <h1>🎵 YouTube Playlist Downloader</h1>
+            
+            <!-- Input Card -->
+            <div class="input-card fade-in" style="animation-delay: 0.1s;">
+                <div class="input-group">
+                    <input type="url" id="playlistUrl" placeholder="https://www.youtube.com/playlist?list=..." required>
+                    <button id="loadBtn" class="btn-primary">Load Playlist</button>
+                </div>
+            </div>
+
+            <!-- Options Grid (hidden initially) -->
+            <div id="formatGroup" class="options-grid hidden fade-in" style="animation-delay: 0.2s;">
+                <select id="formatSelect">
+                    <option value="">Select Format...</option>
+                    <option value="mp4">MP4 (Video)</option>
+                    <option value="mp3">MP3 (Audio Only)</option>
+                    <option value="webm">WebM</option>
+                </select>
+                <select id="qualitySelect">
+                    <option value="">Select Quality...</option>
+                    <option value="low">Low (360p)</option>
+                    <option value="medium">Medium (480p)</option>
+                    <option value="high">High (720p)</option>
+                    <option value="highest">Highest Available</option>
+                </select>
+                <button id="downloadBtn" class="btn-primary">📦 Download ZIP</button>
+            </div>
+
+            <!-- Progress Section -->
+            <div id="progress" class="progress-section hidden fade-in" style="animation-delay: 0.3s;">
+                <div class="progress-circle">
+                    <svg class="progress-ring" viewBox="0 0 100 100">
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="var(--sky-primary)"/>
+                                <stop offset="100%" stop-color="var(--sky-secondary)"/>
+                            </linearGradient>
+                        </defs>
+                        <circle class="progress-ring-circle progress-ring-bg" cx="50" cy="50" r="45"></circle>
+                        <circle class="progress-ring-circle progress-ring-fill" cx="50" cy="50" r="45"></circle>
+                    </svg>
+                    <div id="progressText">0%</div>
+                </div>
+                <p id="statusText">Ready to download...</p>
+                <div id="videoList" class="video-grid"></div>
+            </div>
+
+            <!-- Messages -->
+            <div id="error" class="error hidden fade-in"></div>
+            <div id="success" class="success hidden fade-in"></div>
+        </div>
+
+        <!-- Sidebar Preview (future: playlist info/thumbs) -->
+        <div class="sidebar">
+            <div class="preview-panel hidden fade-in">
+                <h3 style="margin-bottom: 1rem; color: var(--text-dark);">Playlist Preview</h3>
+                <div id="previewContent">Enter URL to preview videos</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
